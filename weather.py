@@ -22,19 +22,18 @@ def home():
     }
     return render_template('main.html', **templateData)
 
-weather_data = [
-    {
-        'id': 'weather_data',
-        'time_stamp': sensors.get_time(),
-        'kelvin': sensors.get_kelvin(),
-        'celsius': sensors.get_celsius(),
-        'fahrenheit': sensors.get_fahrenheit()
-    }
-]
-
 
 @app.route('/weather/api/v1.0/temperature', methods=['GET'])
 def get_temp():
+    weather_data = [
+        {
+            'id': 'weather_data',
+            'time_stamp': sensors.get_time(),
+            'kelvin': sensors.get_kelvin(),
+            'celsius': sensors.get_celsius(),
+            'fahrenheit': sensors.get_fahrenheit()
+        }
+    ]
     return jsonify({'weather_data': weather_data})
 
 

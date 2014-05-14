@@ -8,7 +8,7 @@ from flask import jsonify, Flask, render_template
 import sensors
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 
 @app.route('/')
@@ -21,6 +21,10 @@ def home():
         'fahrenheit': sensors.get_fahrenheit()
     }
     return render_template('main.html', **templateData)
+
+@app.route('/weather/')
+def current_weather():
+    return render_template('current_weather.html')
 
 
 @app.route('/weather/api/v1.0/temperature', methods=['GET'])

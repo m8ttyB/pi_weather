@@ -5,7 +5,7 @@ $(document).ready(function() {
       dataType: "json",
       success: function(data){ 
           console.log(data);
-          $('#fahrenheit').append(JSON.stringify(data.weather_data));
+          $('#fahrenheit').append(JSON.stringify(obj.weather_data[0].fahrenheit));
           $('#fahrenheit').append(String(data.weather_data));
       },
       error: function (data, jqXHR, textStatus, errorThrown) {

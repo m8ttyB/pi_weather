@@ -24,14 +24,18 @@ def home():
 
 @app.route('/weather/')
 def current_weather():
-    return render_template('current_weather.html')
+    templateData = {
+        'title': 'Temperature :: Home',
+        'time': sensors.get_time()
+        }
+    return render_template('current_weather.html', **templateData)
 
 
 @app.route('/weather/api/v1.0/temperature', methods=['GET'])
 def get_temp():
     weather_data = [
         {
-            'id': 'weather_data',
+            'id': 'temperature',
             'time_stamp': sensors.get_time(),
             'kelvin': sensors.get_kelvin(),
             'celsius': sensors.get_celsius(),
